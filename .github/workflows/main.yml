@@ -1,0 +1,36 @@
+name: 'HWExtend'
+
+on:
+  #push:
+  schedule:
+    # run every 2 days on UTC 1/2/3am (9/10/11am CN time)
+     - cron: '49 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,23,0 */1 * *'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-2022
+     # runs-on: macos-latest
+    steps:
+        - name: 'Checkout codes'
+          uses: actions/checkout@v2
+          with:
+            python-version: '3.9.5'
+        - name: 'Set up Python'
+          uses: actions/setup-python@v2
+          with:
+            python-version: '3.9.10'
+        - name: 'Install requirements'
+          run: |
+            pip3 install -r ./requirements.txt
+        - name: 'Working'
+          env:
+            USERNAME: ${{ secrets.USERNAME }}
+            PASSWORD: ${{ secrets.PASSWORD }}
+            USERNAME_WOIDEN: ${{ secrets.USERNAME_WOIDEN }}
+            PASSWORD_WOIDEN: ${{ secrets.USERNAME_WOIDEN }}
+            BARKKEY: ${{ secrets.BARKKEY }}
+          run: |
+            python3 ./main.py
+            python3 ./main_Woiden.py
