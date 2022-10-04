@@ -36,7 +36,7 @@ WE: `https://github.com/ThekingMX1998/HWE/tree/Woiden`
 ```因为github的Actions虚机托管在Azure上， 每次重新执行Actions的run workflow都会导致切换公网IP，有的IP被别人使用过（干啥就不知道了嘿嘿！），所以识别成了机器人，报出这个错。```
 - 解决方法：
 ```多次重新执行run workflow，切换到好IP可以正常运行为止。```
-<img src=./result.jpeg width=50% />
+<img src=./result.jpg width=50% />
 
 #### 参考
 - https://www.python.org/
